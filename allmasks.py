@@ -1,3 +1,5 @@
+# so here i am trying to give each object mask a different color and show them in a singe final output image
+
 from ultralytics import YOLO
 import cv2
 import numpy as np
