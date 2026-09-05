@@ -12,7 +12,7 @@ results = model(image)  # i can enter multiple images by giving a python list of
 result = results[0] # result is a list with elements which can be accessed by indexing (similar to arrays in C++)
 
 #Result includes the objects it detected in the image, their masks, original image and many more data
-# # since i have given one image only there is only one result which is stored in result[0] 
+# since i have given one image only there is only one result which is stored in result[0] 
 # print(type(results[0]))
 
 # # visualizing the datatype of the mask created and the shape of the mask
@@ -42,10 +42,10 @@ def random_color(): #color generator for different masks
 
 for i in range (0, no_objects):
     
-    #lets get the object names from the model is a list
-    class_id = int( result.boxes.cls[i].item() )
+    #lets get the class names from the model
+    class_id = int( result.boxes.cls[i].item() ) #class id of each object detected
     print("Class ID: ",class_id)
-    print("Class name: ",result.names[class_id])
+    print("Class name: ",result.names[class_id]) #name of the class 
     
     # Trying to convert the first mask into a boolean mask
     num_mask = result.masks.data[i] #we take one 2d array representing one mask
@@ -72,7 +72,7 @@ for i in range (0, no_objects):
     print(Resized_mask.shape)
 
     # image[mask_condition] = value
-    colored_mask[Resized_mask > 0] = random_color() #open cv uses [B,G,R]
+    colored_mask[Resized_mask > 0] = random_color() 
 
 # blend the mask with original image 
 # cv2.addWeighted(src1, alpha, src2, beta, gamma)
