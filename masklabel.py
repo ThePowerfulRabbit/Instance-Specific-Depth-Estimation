@@ -84,7 +84,7 @@ for i in range (0, no_objects):
     
     #Now lets put the text in the coordinate itself
     # cv2.putText(image, text, position, font, font_scale, color, thickness)
-    cv2.putText(image, class_name, position , cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+    cv2.putText(image, class_name, position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
     
     # image[mask_condition] = value
     colored_mask[Resized_mask > 0] = random_color() 
