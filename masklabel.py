@@ -45,7 +45,8 @@ for i in range (0, no_objects):
     #lets get the class names from the model
     class_id = int( result.boxes.cls[i].item() ) #class id of each object detected
     print("Class ID: ",class_id)
-    print("Class name: ",result.names[class_id]) #name of the class 
+    class_name = result.names[class_id]
+    print("Class name: ",class_name) #name of the class 
     
     # Trying to convert the first mask into a boolean mask
     num_mask = result.masks.data[i] #we take one 2d array representing one mask
@@ -71,6 +72,20 @@ for i in range (0, no_objects):
     Resized_mask = cv2.resize(BW_mask, (image_width, image_height))
     print(Resized_mask.shape)
 
+    #now lets get the coordinates of the position of the mask
+    coordinates = result.boxes.xyxy[i] #this gives x1,y1,x2,y2 of the bounding box
+    x1 = coordinates[0].item() #We useitem() here because the putText function expects numeric values in the coordinates and result.boxes.xyxy[i] gives pytorch tensors
+    y1 = coordinates[1].item()
+    x2 = coordinates[2].item()
+    y2 = coordinates[3].item()
+    X = int((x1+x2)/2)
+    Y = int((y1+y2)/2)
+    position = [X,Y] # to display the text in the middle of the bounding box
+    
+    #Now lets put the text in the coordinate itself
+    # cv2.putText(image, text, position, font, font_scale, color, thickness)
+    cv2.putText(image, class_name, position , cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255), 2 )
+    
     # image[mask_condition] = value
     colored_mask[Resized_mask > 0] = random_color() 
 
