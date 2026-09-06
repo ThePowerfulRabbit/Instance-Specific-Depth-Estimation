@@ -1,5 +1,4 @@
 #nothing just made it into a custom function
-
 from ultralytics import YOLO
 import cv2
 import numpy as np
@@ -101,6 +100,11 @@ def Segmentation(image, model):
     # gamma : 0
     output = cv2.addWeighted(image, 0.7, colored_mask, 0.3, 0)
 
+    #code to make the output window size resizable
+    if (image_height > 2160 or image_width > 3840):
+        cv2.namedWindow("Segmentation Output", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Segmentation Output", 1200, 800)
+    
     cv2.imshow("Segmentation Output", output)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
