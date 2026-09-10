@@ -57,11 +57,12 @@ print("Normalized max:", depth_normalized.max())
 colored_depth_map = np.zeros_like(image)
 
 #lets make a colored gradient mask
-blue_region = (depth_normalized >= 0) & (depth_normalized <= 51) #so these are boolean masks with same shape as depth_normalized.with each element either True or False depending on whether the condition is satisfied or not. each mask target a different region of the depth map. blue is for closest object red for furthest yellow, green cyan in between.
-cyan_region = (depth_normalized >= 52) & (depth_normalized <= 102)
-green_region = (depth_normalized >= 103) & (depth_normalized <= 153)
-yellow_region = (depth_normalized >= 154) & (depth_normalized <= 204)
-red_region = (depth_normalized >= 205) & (depth_normalized <= 255)
+blue_region   = (depth_normalized >= 0)   & (depth_normalized <= 51) #so these are boolean masks with same shape as depth_normalized.with each element either True or False depending on whether the condition is satisfied or not. each mask target a different region of the depth map. blue is for closest object red for furthest yellow, green cyan in between.
+cyan_region   = (depth_normalized > 51)   & (depth_normalized <= 102)
+green_region  = (depth_normalized > 102)  & (depth_normalized <= 153)
+yellow_region = (depth_normalized > 153)  & (depth_normalized <= 204)
+red_region    = (depth_normalized > 204)  & (depth_normalized <= 255)
+
 # BLUE = [255, 0, 0]
 # CYAN = [255, 255, 0] here only green channel is being changed
 # GREEN = [0, 255, 0] here only blue channel is being changed
@@ -73,21 +74,22 @@ G = np.zeros_like(depth_normalized)
 R = np.zeros_like(depth_normalized)
 
 # Blue to Cyan transition
-G[blue_region] = depth_normalized[blue_region] * (255/51) # take the depth value where blue_region is True and select green channel pixels according to that blue region. The depth value is normalized from 0 to 51 so we multiply it by (255/51) to get the corresponding green channel value from 0 to 255
+G[blue_region] = depth_normalized[blue_region] * (255/51)# take the depth value where blue_region is True and select green channel pixels according to that blue region. The depth value is normalized from 0 to 51 so we multiply it by (255/51) to get the corresponding green channel value from 0 to 255
 B[blue_region] = 255
 R[blue_region] = 0
+
 # Cyan to Green transition
 G[cyan_region] = 255
-B[cyan_region] = 255 - (depth_normalized[cyan_region] - 52) * (255/51)  # I subtracted from 255 because it was transitoning from green to cyan
+B[cyan_region] = 255 - (depth_normalized[cyan_region] - 51) * (255/51) # I subtracted from 255 because it was transitoning from green to cyan
 R[cyan_region] = 0
 
-#Green to yellow transition
-G[green_region] = 255 
-B[green_region] = 0 
-R[green_region] = (depth_normalized[green_region] - 103) * (255/51)  
+# Green to Yellow transition
+G[green_region] = 255
+B[green_region] = 0
+R[green_region] = (depth_normalized[green_region] - 102) * (255/51)
 
 # Yellow to Red transition
-G[yellow_region] = 255 - (depth_normalized[yellow_region] - 154) * (255/51)
+G[yellow_region] = 255 - (depth_normalized[yellow_region] - 153) * (255/51)
 B[yellow_region] = 0
 R[yellow_region] = 255
 
