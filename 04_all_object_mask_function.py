@@ -10,7 +10,7 @@ model = YOLO("yolo11n-seg.pt") # So yolo is a class and i'm creating an object o
 def Segmentation(image, model):
     
     # The inference will begin when i call this model object as a function
-    results = model(image)  # i can enter multiple images by giving a python list of multiple images
+    results = model(image, retina_masks = True)  # i can enter multiple images by giving a python list of multiple images
     result = results[0] # result is a list with elements which can be accessed by indexing (similar to arrays in C++)
 
     #Result includes the objects it detected in the image, their masks, original image and many more data
