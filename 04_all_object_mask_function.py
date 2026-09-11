@@ -98,15 +98,19 @@ def Segmentation(image, model):
     # src2  : colored_mask
     # beta  : 0.3
     # gamma : 0
-    output = cv2.addWeighted(image, 0.7, colored_mask, 0.3, 0)
-
-    #code to make the output window size resizable
-    if (image_height > 2160 or image_width > 3840):
-        cv2.namedWindow("Segmentation Output", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("Segmentation Output", 1200, 800)
     
-    cv2.imshow("Segmentation Output", output)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    return colored_mask, image_height, image_width
+
+colored_mask, image_width, image_height  =Segmentation(image, model)
+
+output = cv2.addWeighted(image, 0.7, colored_mask, 0.3, 0)
+#code to make the output window size resizable
+if (image_height > 2160 or image_width > 3840):
+    cv2.namedWindow("Segmentation Output", cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("Segmentation Output", 1200, 800)
+
+cv2.imshow("Segmentation Output", output)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 Segmentation(image,model)
