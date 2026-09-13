@@ -136,6 +136,7 @@ Some possible extensions are:
 ![Input image](images/image1.jpg)
 
 ---
+
 # Instance Segmentation output
 
 ### YOLO's default plot function output
