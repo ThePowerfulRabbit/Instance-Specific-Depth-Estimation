@@ -1,3 +1,5 @@
+# Here you can select one specific class for which you want to see the depth estimation or you can select "all" to see the depth estimation of all the classes detected by the model. 
+
 from ultralytics import YOLO
 import cv2
 import numpy as np
@@ -20,7 +22,7 @@ def random_color(): #color generator for different masks
         color =[B,G,R]
         return color
 
-def Instance_depth_estimation(image, model, depth_map):
+def Instance_depth_estimation(image, model, depth_map, class_name_to_estimate):
     results = model(image, retina_masks = True)  # i can enter multiple images by giving a python list of multiple images
     result = results[0] # result is a list with elements which can be accessed by indexing (similar to arrays in C++)
 
@@ -62,15 +64,22 @@ def Instance_depth_estimation(image, model, depth_map):
         class_name_position = [X,Y] # to display the text in the middle of the bounding box
         depth_position = [X, Y+20]
 
-        cv2.putText(image, class_name, class_name_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
-        cv2.putText(image, depth_info , depth_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+        if class_name == class_name_to_estimate:
+            cv2.putText(image, class_name, class_name_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+            cv2.putText(image, depth_info , depth_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+        
+        elif(class_name_to_estimate == "all"):
+            cv2.putText(image, class_name, class_name_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+            cv2.putText(image, depth_info , depth_position ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 2 )
+            
 
         segmentation_mask[Resized_mask > 0] = random_color() #apply a random color to pixels in segmentation_mask with corresponding pixels in Resized_mask greater than 0
         
     return segmentation_mask, image_width, image_height
 
+class_name_to_estimate = "all" #write the name of the object class you want to see write "all" if you want to see everything
 # making segmentation mask and bending the colored msk with the input image
-segmentation_mask, image_width, image_height  = Instance_depth_estimation(image_for_display, segmentation_model, depth_map)
+segmentation_mask, image_width, image_height  = Instance_depth_estimation(image_for_display, segmentation_model, depth_map, class_name_to_estimate)
 segmentation_output = cv2.addWeighted(image_for_display, 0.7, segmentation_mask, 0.3, 0)
 
 #code to make the output window size resizable
