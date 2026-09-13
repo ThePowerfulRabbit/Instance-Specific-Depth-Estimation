@@ -130,41 +130,48 @@ Some possible extensions are:
 
 ---
 
-# Here are the various output images generated throughout this project:
 
-### Input image
+## Project Outputs
+
+Here are the various output images generated throughout the project:
+
+### Input Image
 ![Input image](images/image1.jpg)
 
-# Instance Segmentation output
+---
 
-### YOLO's default plot function output
+## Instance Segmentation Output
+
+### YOLO's Default Plot Function Output
 ![YOLO's default plot function output](Output/Image1/YOLO_autosegmentation.png)
 
-### My segmentation code output
+### My Segmentation Code Output
 ![My segmentation code output](Output/Image1/My_segmentation_output.png)
 
 ---
-# Depth Estimation Output
 
-### OpenCV AutoDepth output
+## Depth Estimation Output
+
+### OpenCV AutoDepth Output
 ![OpenCV AutoDepth output](Output/Image1/Opencv_autodepth.png)
 
-### YOLO AutoDepth output
+### YOLO AutoDepth Output
 ![YOLO AutoDepth output](Output/Image1/YOLO_autodepth.png)
 
-### My Grayscale depth map
+### My Grayscale Depth Map
 ![Grayscale depth map](Output/Image1/Grayscale_depth_map.png)
 
-### My Bicolor depth map
+### My Bicolor Depth Map
 ![Bicolor depth map](Output/Image1/Bicolor_depth_map.png)
 
-### My Multi-color depth map
+### My Multi-Color Depth Map
 ![Multi-color depth map](Output/Image1/Multi_Color_depth_map.png)
 
 ---
-# Final Instance Specific Depth map output
 
-### Instance-specific depth estimation
+## Final Instance-Specific Depth Map Output
+
+### Instance-Specific Depth Estimation
 ![Instance-specific depth estimation](Output/Image1/Instance_depth_estimation.png)
 
 ---
