@@ -130,23 +130,13 @@ Some possible extensions are:
 
 ---
 
-
-# Status
-
-**Completed**
-
-The current implementation successfully performs instance-specific depth estimation and visualization for detected objects.
-
-The project is intentionally kept relatively simple so that the underlying data flow and implementation can be understood rather than hidden behind a larger framework.
-
-
 # Here are the various output images generated throughout this project:
 
 ### Input image
 ![Input image](images/image1.jpg)
 
 ---
-## Instance Segmentation output
+# Instance Segmentation output
 
 ### YOLO's default plot function output
 ![YOLO's default plot function output](Output/Image1/YOLO_autosegmentation.png)
@@ -155,14 +145,13 @@ The project is intentionally kept relatively simple so that the underlying data 
 ![My segmentation code output](Output/Image1/My_segmentation_output.png)
 
 ---
-## Depth Estimation Output
+# Depth Estimation Output
 
 ### OpenCV AutoDepth output
 ![OpenCV AutoDepth output](Output/Image1/Opencv_autodepth.png)
 
 ### YOLO AutoDepth output
 ![YOLO AutoDepth output](Output/Image1/YOLO_autodepth.png)
-
 
 ### My Grayscale depth map
 ![Grayscale depth map](Output/Image1/Grayscale_depth_map.png)
@@ -174,7 +163,17 @@ The project is intentionally kept relatively simple so that the underlying data 
 ![Multi-color depth map](Output/Image1/Multi_Color_depth_map.png)
 
 ---
-## Final Instance Specific Depth map output
+# Final Instance Specific Depth map output
 
 ### Instance-specific depth estimation
 ![Instance-specific depth estimation](Output/Image1/Instance_depth_estimation.png)
+
+---
+
+# Status
+
+**Completed**
+
+The current implementation successfully performs instance-specific depth estimation and visualization for detected objects.
+
+The project is intentionally kept relatively simple so that the underlying data flow and implementation can be understood rather than hidden behind a larger framework.
