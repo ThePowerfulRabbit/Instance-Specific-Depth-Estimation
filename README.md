@@ -136,7 +136,7 @@ Some possible extensions are:
 Here are the various output images generated throughout the project:
 
 ### Input Image
-![Input image](images/image1.jpg)
+![Input image](images/image1.png)
 
 ---
 
