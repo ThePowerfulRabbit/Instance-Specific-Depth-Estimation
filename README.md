@@ -155,6 +155,9 @@ Here are the various output images generated throughout the project:
 ### OpenCV AutoDepth Output
 ![OpenCV AutoDepth output](Output/Image1/Opencv_autodepth.png)
 
+### OpenCV Autodepth Inferno palette depthmap
+![OpenCV Autodepth inferno palette output](Output/Image1/Opencv_autodepth_inferno.png)
+
 ### YOLO AutoDepth Output
 ![YOLO AutoDepth output](Output/Image1/YOLO_autodepth.png)
 
@@ -169,7 +172,7 @@ Here are the various output images generated throughout the project:
 
 ---
 
-## Final Instance-Specific Depth Map Output
+## Final Output
 
 ### Instance-Specific Depth Estimation
 ![Instance-specific depth estimation](Output/Image1/Instance_depth_estimation.png)
